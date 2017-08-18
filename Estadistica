@@ -1,0 +1,30 @@
+####      PRACTICA 1      ####
+x <- c(22.2,40.4,16.4,73.7,36.6,149.9,30.0,4.4,33.1,66.7,81.5,16.4)
+mean(x)             #   Media (Datos no agrupados)
+median(x)           #   Mediana
+library(modeest)
+mfv(x)              #   Moda
+var(x)              #   Varianza
+sd(x)               #   Desviacion Estandar
+quantile(x)
+IQR(x)              #   Rango Intercuantil
+min(x)
+max(x)
+
+
+#Análisis gráfico
+#Histograma de frecuencias
+hist(x,freq=FALSE,main="PIB",xlab="Millones de pesos",ylab="frecuencias",col="purple")
+length(x)
+plot(x,type = "l")               #   Linea
+plot(x)                          #   Dispersion
+boxplot(x, col = "red")          #   Grafica de Caja (que tan sesgados estan los datos y su comportamiento)
+
+####    Observaciones Atipicas
+oa1 <- quantile(x,0.25)-1.5*IQR(x)
+oa1
+oa2 <- quantile(x,0.75)+1.5*IQR(x)
+oa2
+
+x[x>oa2]           #    Observacion Atipica
+
