@@ -1,0 +1,18 @@
+##########################################     Lectura de datos, formato .csv
+
+datos <- read.csv("C:/Users/SALA-G29/Desktop/PRACTICA/PIB.csv",header=TRUE)
+PIB <- (datos[,2])
+length(PIB)
+PIB
+
+#Análisis estadístico
+mean(PIB) #media de los datos
+median(PIB) #mediana
+#PARA CALCULAR LA MODA DE UNA MUESTRA "modeest" una libreria
+library(modeest)
+mfv(PIB) #calcula la moda
+
+var(PIB)
+sd(PIB)
+quantile(PIB)
+summary(PIB)
