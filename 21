@@ -1,0 +1,34 @@
+#   Variable dependiente
+#   Esperanza de Vida
+
+#   Variables independientes
+#   Tasa de fecundidad
+#   tasa de mortalidad infantil (menores de 5 años)
+#   % de poblacion urbana
+#   Niños economicamente activos
+#   Niñas economicamente activos
+#   tasa de crecimiento anual
+
+#   De los paisess Mexico, Argentina y Brasil
+#   Son tres modelos | Por cada país
+
+
+require (foreign)
+base <- data.frame(read.csv ("C:/Users/Sala-D16/Desktop/argentina.csv"))
+nbase <- (base[2],base[],base[],base[])
+
+names(base)
+pairs(base)
+cor(base)
+
+#   MODELO NULO
+nulo <- lm(GDAXI ~ 1, data = REGRMULT)
+summary(nulo)
+
+#   MODELO COMPLETO
+completo <- lm(GDAXI ~ . , data = REGRMULT)
+summary(completo)
+
+step(nulo, scope = list(lower = nulo, upper = completo), direction = "forward" )
+
+
