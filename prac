@@ -1,0 +1,40 @@
+Práctica 8
+
+
+1.- Cargar la librería MASS y combinar Pima.tr y Pima.tr2 para definir un data frame llamado “train”. Guardar “Pima.te” en un objeto llamado “test”. Cambiar la codificación de la variable “type” a 0 (no diabéticos) y 1 (diabéticos). Determinar cuántos valores NA existen por columna.
+
+
+```{r}
+install.packages("MASS")
+library(MASS)
+Pima.tr$type
+as.numeric(Pima.tr$type)-1
+```
+
+2.- Obtenga una gráfica entre pares de variables independientes usando la función “pairs( )”.
+
+```{r}
+
+```
+
+
+3. Ajustar un modelo de regresión logística, un modelo probit y un modelo log-log complementario.
+  a) Considerando las independientes “age” y “bmi”
+  
+  b) Considerando las independientes “age” y “bmi” y la interacción entre ellas.
+```{r}
+
+```
+
+4. De acuerdo a los modelos obtenidos en 3, ¿cuál es la predicción de la probabilidad para alguien de 35 años con un bmi de 32?, ¿qué pasa para un bmi de 22?
+```{r}
+
+```
+
+5. Para el modelo de regresión logística, ¿Cuáles son los momios de que una mujer de 55 años y bmi de 37 sea diabética?
+```{r}
+
+```
+
+
+6. Con respecto al ejercicio 3, ¿es razonable pensar que existe interacción entre “age” y “bmi”? Justifique.
