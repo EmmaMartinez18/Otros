@@ -1,64 +1,67 @@
 %%%%       EJERCICIOS MATLAB
 %%%%       Alumna: Emma Edith Martinez Mendez
+
 clear;
 clc;
 
 %   1.- Calcule 5.1^(1.7) Respuesta en formato short e
 
-format short e              %   Muestra la operacion realizada de forma flotante (5 digitos)
-5.1^(1.7)
+        format short e                      %   Muestra la operacion realizada de forma flotante (5 digitos)
+        5.1.^(1.7)
 
 %   2.- Calcule y=e^(x)+sin(pi*x)+x^(10)  para x=0.357
 
-x = 0.375;                  %   Declaracion del valor de x
-y = exp(x) + sin(pi * x) + x^(10)
+        x = 0.375;                          %   Declaracion del valor de x
+        y = exp(x) + sin(pi * x) + x.^(10)
 
 %   3.- Dados los números complejos z1= 1+i,z2=1+2i. Calcule z1z2,(z1z22)
 
-z1 = 1 + i; z2 = 1 + 2i;    %   Declacion de numeros complejos a utilizar
-z1*z2
-z1*z2^(2)
+        z1 = 1 + i; z2 = 1 + 2i;            %   Declacion de numeros complejos a utilizar
+        z1*z2
+        z1*z2.^(2)
 
 %   4.-	Dada la matriz 
-%           5   -10     1
-%      A=  -10     5    -3
-%   	     1    -3     2	
-%   Asuma B=A3. Determine b23, Sea u la primera columna de A y w las segunda fila de A. Calcule vw y wv
+%                5   -10     1
+%          A=  -10     5    -3
+%        	     1    -3     2	
+%       Asuma B=A3. Determine b23, Sea u la primera columna de A y w las segunda fila de A. 
+%       Calcule vw y wv
 
-A = [5 -10 1; -10 5 -3; 1 -3 2]     %   Declaracion de la matriz
-B = A^(3)
+        A = [5 -10 1; -10 5 -3; 1 -3 2]     %   Declaracion de la matriz
+        B = A^(3)
 
-v = A(:,1)                          %   Declaracion del vector v
-w = A(2,:)                          %   Declaracion del vector w
+        v = A(:,1)                          %   Declaracion del vector v
+        w = A(2,:)                          %   Declaracion del vector w
 
 %   Respuestas
-v*w
-w*v
+        
+        v*w
+        w*v
 
 %   5.- Dada la matriz A anterior denotamos las entradas de A con a_(kl),
 %       i.e. A=(a_(kl)). La matriz B=(b_(k))3 se forma estableciendo. B_(kl)=a_(kl) Determine det(B). 
-%       Tip: use operaciones en el sentido de arreglo para formar B y calcule el determinante posteriormente.
+%       Tip: Use operaciones en el sentido de arreglo para formar B y calcule el determinante posteriormente.
 
-det(B)
+        det(B)
 
 %%%%%%%%%%%
-B = A(1:3,1:3);
-B = B.^3;
-det(B)
+        B = A(1:3,1:3);
+        B = B.^3;
+        det(B)
 
-B2 = A(1,:);
-B2 = B2.^3
-B3 = A(2,:);
-B3 = B3.^3
-B4 = A(3,:);
-B4 = B4.^3
+        B2 = A(1,:);
+        B2 = B2.^3
+        B3 = A(2,:);
+        B3 = B3.^3
+        B4 = A(3,:);
+        B4 = B4.^3
 %%%%%%%%%%
 
 %   6.- Dada  la matriz A y el vector B de los ejercicios anteriores.
 %       Determine la solución x de Ax=b
 
-InvA = inv(A)           %   Inversa de la matriz A 
-x = B*InvA
+        InvA = inv(A)                       %   Inversa de la matriz A 
+        x = B*InvA
 
 %   7.-	Dada la matriz A y el vector b. 
 %       En lugar de un único lado derecho consideramos una secuencia dada por
@@ -68,12 +71,74 @@ x = B*InvA
 %       Determine las soluciones xj de Ax_(j)=b_(j), j=1,..,10. 
 %       Ponga atención a la eficiencia.
 
-for j = 1 : 10      
-    b = [1;j;j^2]  
-    xk = InvA*b
-end
+        for j = 1 : 10      
+            b = [1;j;j.^2]  
+            xk = InvA*b
+        end
 
 %   8.-	En el método de potencia inversa la relación recurrente Axk+1=xk juega un papel importante. 
 %       Dada  la matriz A y el vector b Establezca x1= b y defina xk, k=2,3,--- por recurrencia.
 %       Axk=Xk-1
 %       Determine las xk, para k=2,3,---,10 ponga atención a la eficiencia, i.e. use la descomposición LU de A.
+
+
+
+%   10.- Calcule los números xn, n=1,….,250 de x1=0.1
+%        Xn+1=3.5xn(1- xn), n=1,…,249
+%        Determine x211, x242, x245, x246, x249, x250
+%        Anote el periodo cuatro en este sistema caótico Respuesta en format short e
+
+        x = [];                              %   Declara la variable x como vector
+        x(1) = 0.1;
+
+        for i=1:250
+            x(i+1) = 3.5*x(i)*(1-x(i));
+        end
+
+        fprintf('\n Valor de x211 = %5.4e', x(211))
+        fprintf('\n Valor de x242 = %5.4e', x(242))
+        fprintf('\n Valor de x245 = %5.4e', x(245))
+        fprintf('\n Valor de x246 = %5.4e', x(246))
+        fprintf('\n Valor de x249 = %5.4e', x(249))
+        fprintf('\n Valor de x250 = %5.4e \n\n', x(250))
+
+%   11.- Imprima un cuadro conteniendo los valores (x, y(x)), con y(x)=sin(x), x=k y k=0,1,…..,10. 
+%        De sus respuestas en format short
+
+        disp('(x,       y(x))')
+
+        for i = 0: 10
+            y = sin(i);
+            fprintf('\n %d      %f', i, y)
+        end
+
+%   12-	Los vectores x, y, z son dados por x(n)=nh, h=2/N, N=100
+
+%       y(n)=raíz(x(n))
+%       z(n)=(x(n))^2, n=0,…..,N
+
+%       Crea estos vectores sin el uso de declaraciones en ciclo (tip: 
+%       para construir z es útil usar operaciones en sentido de arreglo) 
+%       Después: Despliegue las funciones raíz(x), x^2 en el intervalo (0,2), como gráficas. 
+%       Colóquelas en una gráfica y haga uso de los vectores mencionados anteriormente. 
+%       Haga las dos gráficas visualmente diferentes. (Use el comando de Matlab help plot para buscar cómo se puede hacer esto).
+%       Cuando trabajes con Matlab, trata de usar funciones. 
+%       Una función está dada en un archivo función y tal archivo se puede hacer usando el editor.
+
+        N = 100;
+        n = 0:N;
+        h = 2/N;
+        
+        x = n*h;
+        y = sqrt(x);
+        z = x.^2;
+        
+        
+        x2 = 0:2;           %   Intervalo (0,2)
+        
+        f1 = sqrt(x2);      %   Funcion raiz(x) en el intervalo (0,2)
+        f2 = x2.^2;         %   Funcion x^2 en el intervalo (0,2)
+        
+        g1 = plot(x2,f1)
+        g2 = plot(x2,f2)
+        
