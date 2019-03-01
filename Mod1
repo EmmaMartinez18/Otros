@@ -82,6 +82,20 @@ clc;
 %       Determine las xk, para k=2,3,---,10 ponga atención a la eficiencia, i.e. use la descomposición LU de A.
 
 
+%   9.- Tienes que generar el vector línea con los siguientes componentes 
+%       y(n)={(1,   1≤n≤10@5,   11≤n≤20)┤
+%       Genera este vector concatenando dos sub vectores. Repita esta tarea de que y sea un vector columna, con las entradas anteriores. (Tip. Es aconsejable usar archivos script cuando se trabaja con Matlab. Use el editor para hacer script files de ahora en adelante y deje que Matlab ejecute estos scripts posteriormente)
+
+        y1=[];
+        for n= 1 : 10
+            y1(n)=1;
+        end
+        y2=[];
+        for n= 1 : 10
+            y2(n)=5;
+        end
+        y=[y1 y2];
+        y(:)
 
 %   10.- Calcule los números xn, n=1,….,250 de x1=0.1
 %        Xn+1=3.5xn(1- xn), n=1,…,249
